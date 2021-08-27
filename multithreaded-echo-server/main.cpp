@@ -62,7 +62,6 @@ int handle_connection(SOCKET socket) {
 }
 
 int initialize_socket(SOCKET& listenSocket) {
-    // GILAD: Add doc to function, specifically explaining the return argument
     int res;
 
     WSADATA wsaData;
@@ -148,8 +147,8 @@ int __cdecl main(void)
     }
 
 server_cleanup:
-    for (auto& client_thread : clientThreads) {
-        client_thread.join();
+    for (auto& clientThread : clientThreads) {
+        clientThread.join();
     }
 
     if (closesocket(listenSocket) != 0) {
